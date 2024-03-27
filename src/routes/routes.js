@@ -21,6 +21,10 @@ routes.get('/test', (req, res) => {
     return res.status(200).json({ type: 'Test', message: 'Everything works!' });
 });
 
+routes.post('/test-event', (req, res) => {
+    res.status(200).json(req.body);
+});
+
 routes.post('/', (req, res) => {
 
     console.log('Request Body: ', req.body);
