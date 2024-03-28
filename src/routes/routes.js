@@ -59,7 +59,7 @@ routes.post('/', (req, res) => {
     let serverEvent;
 
     if (typeof (req.body.event) === 'string')
-        serverEvent = (new ServerEvent())
+        serverEvent = new ServerEvent()
             .setEventName(req.body.event)
             .setEventTime(current_timestamp)
             .setUserData(userData)
@@ -74,7 +74,7 @@ routes.post('/', (req, res) => {
     });
 
     const eventsData = [serverEvent];
-    const eventRequest = (new EventRequest(access_token, pixel_id)).setEvents(eventsData);
+    const eventRequest = new EventRequest(access_token, pixel_id).setEvents(eventsData);
 
     const onFullfilled = (response) => {
         console.log('Response: ', response);
