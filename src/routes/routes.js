@@ -22,7 +22,7 @@ routes.get('/test', (req, res) => {
 });
 
 routes.post('/test-event', (req, res) => {
-    const ip = req.ip;
+    const ip = req.socket.remoteAddress;
 
     const geo = geoip.lookup(ip);
 
