@@ -44,11 +44,13 @@ routes.post('/', (req, res) => {
 
     const currentDate = new Date();
     const current_timestamp = Math.floor(currentDate.getTime() / 1000);
-
     const userData = (new UserData())
         .setClientIpAddress(ip)
         .setClientUserAgent(req.headers['user-agent'])
-    //.setFbp(req.body.fbp && req.body.fbp.trim() !== "" ? req.body.fbp : generateFbp(currentDate))
+        .setFbp(req.body.fbp && req.body.fbp.trim() !== "" ? req.body.fbp : generateFbp(currentDate))
+
+    if (geo != null)
+        userData.setCity(geo.city.toLowerCase().trim()).setCountry(geo.country.toLowerCase().trim());
 
     if (req.body.fbc || req.body.fbclid)
         userData.setFbc(req.body.fbc && req.body.fbc.trim() !== '' ? req.body.fbc : generateFbc(currentDate, req.body.fbclid));

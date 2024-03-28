@@ -1,5 +1,5 @@
 const generateFbp = (creationTime) => {
-    let random = Math.random().toString().substring(1);
+    let random = Math.random().toString().replace('.', '');
     return `fb.1.${creationTime.getTime()}.${random}`;
 }
 
