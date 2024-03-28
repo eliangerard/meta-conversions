@@ -1,5 +1,6 @@
 require('dotenv').config();
 const express = require('express');
+const requestIP = require('request-ip');
 const geoip = require('geoip-lite');
 const bizSdk = require('facebook-nodejs-business-sdk');
 const { generateFbc, generateFbp } = require('../util/helpers');
@@ -23,7 +24,7 @@ routes.get('/test', (req, res) => {
 
 routes.post('/test-event', (req, res) => {
     console.log(req.socket.remoteAddress, req.ip, req.headers['x-forwarded-for'], req.headers['x-real-ip']);
-    const ip = req.socket.remoteAddress.split(" ").pop();
+    const ip = requestIP.getClientIp(req);
     console.log(ip);
     const geo = geoip.lookup(ip);
 
