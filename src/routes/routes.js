@@ -24,7 +24,7 @@ routes.get('/test', (req, res) => {
 routes.post('/test-event', (req, res) => {
     console.log(req.socket.remoteAddress, req.ip, req.headers['x-forwarded-for'], req.headers['x-real-ip']);
     const ip = req.socket.remoteAddress.split(" ").pop();
-
+    console.log(ip);
     const geo = geoip.lookup(ip);
 
     console.log('Geo: ', geo);
