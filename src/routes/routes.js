@@ -22,11 +22,11 @@ routes.get('/test', (req, res) => {
 });
 
 routes.post('/test-event', (req, res) => {
+    console.log(req.socket.remoteAddress, req.ip, req.headers['x-forwarded-for'], req.headers['x-real-ip']);
     const ip = req.socket.remoteAddress;
 
     const geo = geoip.lookup(ip);
 
-    console.log(req.ip);
     console.log('Geo: ', geo);
     console.log(req.body);
     res.status(200).json(req.body);
