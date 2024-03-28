@@ -50,7 +50,7 @@ routes.post('/', (req, res) => {
         .setFbp(req.body.fbp && req.body.fbp.trim() !== "" ? req.body.fbp : generateFbp(currentDate))
 
     if (geo != null)
-        userData.setCity(geo.city.toLowerCase().trim()).setCountry(geo.country.toLowerCase().trim());
+        userData.setCity(geo.city.toLowerCase().trim()).setState(geo.region.toLowerCase().trim()).setCountry(geo.country.toLowerCase().trim());
 
     if (req.body.fbc || req.body.fbclid)
         userData.setFbc(req.body.fbc && req.body.fbc.trim() !== '' ? req.body.fbc : generateFbc(currentDate, req.body.fbclid));
