@@ -34,11 +34,10 @@ routes.post('/test-event', (req, res) => {
 });
 
 routes.post('/', (req, res) => {
+    console.log("IPs:", req.socket.remoteAddress, req.ip, req.headers['x-forwarded-for'], req.headers['x-real-ip']);
+    console.log('Request Body:', req.body);
 
-    console.log('Request Body: ', req.body);
-    console.log(req.ip);
-
-    const ip = req.ip;
+    const ip = requestIP.getClientIp(req);
     const geo = geoip.lookup(ip);
 
     console.log('Geo: ', geo);
