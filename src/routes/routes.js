@@ -65,7 +65,7 @@ routes.post('/', (req, res) => {
             .setUserData(userData)
             .setCustomData(customData)
             .setEventSourceUrl(req.body.event_source_url)
-            .setActionSource(req.body.action_source)
+            .setActionSource("website")
             .setEventId(req.body.event + current_timestamp);
 
     else res.status(500).json({
