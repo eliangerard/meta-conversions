@@ -22,5 +22,5 @@ app.use('/event', routes);
 const PORT = process.env.PORT || 3000;
 
 server.listen(PORT, () => {
-    console.log(`Servidor escuchando en https://localhost:${port}`);
+    console.log(`Servidor escuchando en https://localhost:${PORT}`);
 });
