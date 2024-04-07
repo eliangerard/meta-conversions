@@ -11,9 +11,8 @@ routes.get('/test', (req, res) => {
 routes.get('/redirect', detailIP, async (req, res) => {
     const url = req.query.url;
     const name = req.query.name;
-    console.log(req.headers);
     if (url && name) {
-        const response = await fireEvent(req, { event: name, event_source_url: url });
+        const response = await fireEvent(req, { event: name, event_source_url: req.headers.referer });
         console.log(response);
         return res.redirect(url);
     } else {
