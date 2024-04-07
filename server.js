@@ -21,9 +21,9 @@ if (process.env.NODE_ENV == "production") {
     }, app);
 
     server.listen(PORT, () => {
-        console.log(`Server listening on https://localhost:${PORT}`);
+        console.log(`Server listening on https://localhost:${PORT} for Pixel ID: ${process.env.PIXEL_ID}`);
     });
 }
 else app.listen(PORT, () => {
-    console.log(`Server listening on http://localhost:${PORT}`);
+    console.log(`Server listening on http://localhost:${PORT} for Pixel ID: ${process.env.PIXEL_ID}`);
 })
